@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface UserService {
     List<UserPo> listUserPo();
+    UserPo findByUsername(String username);
+    UserPo login(String username, String password);
 }

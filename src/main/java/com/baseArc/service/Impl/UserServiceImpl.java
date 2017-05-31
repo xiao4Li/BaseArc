@@ -22,4 +22,14 @@ public class UserServiceImpl implements UserService {
     public List<UserPo> listUserPo() {
         return userPoDao.listUserPo();
     }
+
+    @Override
+    public UserPo findByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public UserPo login(String username, String password) {
+        return null;
+    }
 }
