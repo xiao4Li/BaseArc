@@ -10,7 +10,11 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <mvc:annotation-driven />
-    <mvc:default-servlet-handler/>
+
+
+    <mvc:resources location="classpath:/META-INF/static/" mapping="/static/**"/>
+
+
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

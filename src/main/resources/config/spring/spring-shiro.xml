@@ -13,10 +13,10 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
         <property name="loginUrl" value="/login" />
-        <property name="successUrl" value="/project" />
+        <property name="successUrl" value="/index" />
         <property name="filterChainDefinitions">
             <value>
-                /index = anon
+                /static/** = anon
                 /** = authc
             </value>
         </property>
