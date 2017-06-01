@@ -30,7 +30,7 @@ public class IndexController {
             //todo: login.jsp
             mv.setViewName("dashboard");
         }else{
-            mv.setViewName("login.jsp");
+            mv.setViewName("login");
         }
         return mv;
     }

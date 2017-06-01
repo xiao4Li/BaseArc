@@ -11,8 +11,7 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <mvc:annotation-driven />
 
-
-    <mvc:resources location="classpath:/META-INF/static/" mapping="/static/**"/>
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
 
 
     <!-- 3.配置jsp 显示ViewResolver -->
