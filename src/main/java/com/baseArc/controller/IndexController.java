@@ -2,6 +2,10 @@ package com.baseArc.controller;
 
 import com.baseArc.po.UserPo;
 import com.baseArc.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -24,14 +28,35 @@ public class IndexController {
 
 
     @RequestMapping("login")
-    public ModelAndView login(String username,String password, Boolean rememberMe){
+    public ModelAndView login(String username,String password){
         ModelAndView mv = new ModelAndView();
         if(StringUtils.hasText(username) && StringUtils.hasText(password)){
             //todo: login.jsp
+            AuthenticationToken token = new UsernamePasswordToken(username,password);
+
+
+            Subject subject = SecurityUtils.getSubject();
+            subject.login(token);
+
             mv.setViewName("dashboard");
         }else{
             mv.setViewName("login");
         }
+        return mv;
+    }
+
+    @RequestMapping("addUser")
+    public ModelAndView addUser(String username,String password){
+        ModelAndView mv = new ModelAndView();
+
+        UserPo userPo = new UserPo();
+
+        userPo.setUsername(username);
+        userPo.setPassword(password);
+        userPo.setSalt("test");
+
+        userService.addUserPo(userPo);
+
         return mv;
     }
 

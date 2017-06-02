@@ -17,13 +17,28 @@
         <property name="filterChainDefinitions">
             <value>
                 /static/** = anon
+                /addUser = anon
                 /** = authc
             </value>
         </property>
     </bean>
 
     <bean id="userRealm" class="com.baseArc.shiro.UserRealm">
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="authenticationCachingEnabled" value="false"/>
         <property name="authorizationCachingEnabled" value="false"/>
+    </bean>
+
+    <bean id="credentialsMatcher"
+          class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="MD5" />
+        <property name="hashIterations" value="2" />
+        <property name="storedCredentialsHexEncoded" value="true" />
+    </bean>
+
+    <bean id="defaultHashService" class="org.apache.shiro.crypto.hash.DefaultHashService">
+        <property name="hashAlgorithmName" value="MD5"/>
+        <property name="hashIterations" value="2"/>
+        <property name="generatePublicSalt" value="false"/>
     </bean>
 </beans>

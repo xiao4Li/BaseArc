@@ -14,4 +14,5 @@ public interface UserService {
     List<UserPo> listUserPo();
     UserPo findByUsername(String username);
     UserPo login(String username, String password);
+    UserPo addUserPo(UserPo userPo);
 }
