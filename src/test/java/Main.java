@@ -18,19 +18,13 @@ import java.security.NoSuchAlgorithmException;
 public class Main {
     public static void main(String[] argus) throws NoSuchAlgorithmException {
         DefaultHashService hashService = new DefaultHashService(); //默认算法SHA-512
-        hashService.setHashAlgorithmName("SHA-512");
-        hashService.setPrivateSalt(new SimpleByteSource("123")); //私盐，默认无
-        hashService.setGeneratePublicSalt(true);//是否生成公盐，默认false
-        hashService.setRandomNumberGenerator(new SecureRandomNumberGenerator());//用于生成公盐。默认就这个
+        hashService.setHashAlgorithmName("MD5");
+        hashService.setGeneratePublicSalt(false);//是否生成公盐，默认false
         hashService.setHashIterations(2); //生成Hash值的迭代次数
 
         HashRequest request = new HashRequest.Builder()
-                .setAlgorithmName("MD5").setSource(ByteSource.Util.bytes("hello"))
-                .setSalt(ByteSource.Util.bytes("999")).build();
+                .setAlgorithmName("MD5").setSource(ByteSource.Util.bytes("123456"))
+                .setSalt(ByteSource.Util.bytes("123")).build();
         String hex = hashService.computeHash(request).toHex();
-        HashRequest request2 = new HashRequest.Builder()
-                .setAlgorithmName("MD5").setSource(ByteSource.Util.bytes("hello"))
-                .setSalt(ByteSource.Util.bytes("777")).build();
-        String hex2 = hashService.computeHash(request2).toHex();
     }
 }

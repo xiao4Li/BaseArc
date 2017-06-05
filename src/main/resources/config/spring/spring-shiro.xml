@@ -18,7 +18,8 @@
             <value>
                 /static/** = anon
                 /captchaController/** = anon
-                /addUser = anon
+                /doLogin = anon
+                /login = anon
                 /** = authc
             </value>
         </property>

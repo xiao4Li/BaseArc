@@ -7,7 +7,7 @@
         SELECT * FROM SYS_USER
     </select>
 
-    <select id="findByUsername" resultType="com.baseArc.po.UserPo">
-        SELECT * FROM SYS_USER WHERE USERNAME = ${userName}
+    <select id="findByUsername" resultType="com.baseArc.po.UserPo" parameterType="string">
+        SELECT * FROM SYS_USER WHERE USERNAME = #{username}
     </select>
 </mapper>

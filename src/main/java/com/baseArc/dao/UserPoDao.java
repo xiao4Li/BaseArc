@@ -1,6 +1,7 @@
 package com.baseArc.dao;
 
 import com.baseArc.po.UserPo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ import java.util.List;
  */
 public interface UserPoDao {
     List<UserPo> listUserPo();
-    UserPo findByUsername(String username);
+    UserPo findByUsername(@Param("username") String username);
 }
