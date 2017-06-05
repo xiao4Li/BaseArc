@@ -164,11 +164,11 @@ body {
 
 .form-signin input[type="email"] {
   margin-bottom: 10px;
-  border-radius: 5;
+  border-radius: 5px;
 
 }
 .form-signin input[type="password"] {
-  border-radius: 5;
+  border-radius: 5px;
 
 }
 

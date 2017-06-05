@@ -17,6 +17,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /static/** = anon
+                /captchaController/** = anon
                 /addUser = anon
                 /** = authc
             </value>

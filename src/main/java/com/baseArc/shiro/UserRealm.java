@@ -43,17 +43,7 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
         String username = upToken.getUsername().trim();
-        String password = "";
-        if (upToken.getPassword() != null) {
-            password = new String(upToken.getPassword());
-        }
-        UserPo userPo = null;
-        try {
-           // userPo = userService.login(username, password);
-            userPo = userService.listUserPo().get(1);
-        } catch (Exception e) {
-            throw new AuthenticationException("登录失败");
-        }
+        UserPo userPo = userService.findByUsername(username);
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userPo.getUsername(),userPo.getPassword(),getName());
         info.setCredentialsSalt(ByteSource.Util.bytes(userPo.getSalt()));
         return info;

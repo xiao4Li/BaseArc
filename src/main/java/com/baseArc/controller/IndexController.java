@@ -27,23 +27,23 @@ public class IndexController {
     private UserService userService;
 
 
-    @RequestMapping("login")
-    public ModelAndView login(String username,String password){
-        ModelAndView mv = new ModelAndView();
-        if(StringUtils.hasText(username) && StringUtils.hasText(password)){
-            //todo: login.jsp
-            AuthenticationToken token = new UsernamePasswordToken(username,password);
-
-
-            Subject subject = SecurityUtils.getSubject();
-            subject.login(token);
-
-            mv.setViewName("dashboard");
-        }else{
-            mv.setViewName("login");
-        }
-        return mv;
-    }
+//    @RequestMapping("login")
+//    public ModelAndView login(String username,String password){
+//        ModelAndView mv = new ModelAndView();
+//        if(StringUtils.hasText(username) && StringUtils.hasText(password)){
+//            //todo: login.jsp
+//            AuthenticationToken token = new UsernamePasswordToken(username,password);
+//
+//
+//            Subject subject = SecurityUtils.getSubject();
+//            subject.login(token);
+//
+//            mv.setViewName("dashboard");
+//        }else{
+//            mv.setViewName("login");
+//        }
+//        return mv;
+//    }
 
     @RequestMapping("addUser")
     public ModelAndView addUser(String username,String password){

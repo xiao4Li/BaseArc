@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserPo findByUsername(String username) {
-        return null;
+        return userPoDao.findByUsername(username);
     }
 
     @Override

@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface UserPoDao {
     List<UserPo> listUserPo();
+    UserPo findByUsername(String username);
 }
