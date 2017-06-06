@@ -1,13 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://baseArc.parsecode.tag" prefix="parsecode" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Sign in &middot; Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="icon" href="static/imgs/icon.png" mce_href="static/imgs/icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/imgs/icon.png" mce_href="static/imgs/icon.png" type="image/x-icon">
+
+    <title>钰信诺家</title>
 
     <!-- Le styles -->
     <link href="static/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -57,9 +62,8 @@
         }
 
         .check_code_img{
-            width: 40%;
-            display: inline;
-
+            clear: both;
+            margin-right: 0px;
         }
         .check_code_img img{
             height: 36px;
@@ -84,9 +88,7 @@
     <script src="static/bootstrap/hack/html5shiv.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
 <div class="container">
     <form class="form-signin" action="doLogin" method="post" onsubmit="return validation();">
         <div class="sys_title">
@@ -97,7 +99,7 @@
         <c:if test="${not empty ERROR_CODE}">
             <div class="error_info">
                 <span>
-                        ${ERROR_CODE}
+                       <parsecode:pc key="${ERROR_CODE}"/>
                 </span>
             </div>
         </c:if>
