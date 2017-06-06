@@ -3,8 +3,6 @@ package com.baseArc.support;
 import com.baseArc.dao.ParseCodeDao;
 import com.baseArc.utils.SpringContextUtil;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;

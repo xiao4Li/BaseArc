@@ -16,7 +16,7 @@
         <property name="successUrl" value="/index" />
         <property name="filterChainDefinitions">
             <value>
-                /static/** = anon
+                /media/** = anon
                 /captchaController/** = anon
                 /doLogin = anon
                 /login = anon

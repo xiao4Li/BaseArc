@@ -11,13 +11,13 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <mvc:annotation-driven />
 
-    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+    <mvc:resources mapping="/media/**" location="/WEB-INF/media/"/>
 
 
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/page/" />
+        <property name="prefix" value="/WEB-INF/" />
         <property name="suffix" value=".jsp" />
     </bean>
     <!-- 4.扫描web相关的bean -->
