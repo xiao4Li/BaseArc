@@ -22,10 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
     @RequestMapping(value="doLogin",method = RequestMethod.POST)
-    public ModelAndView doLogin(String username, String password, String identifyingCode){
+    public ModelAndView doLogin(String account, String password, String identifyingCode){
         ModelAndView mv = new ModelAndView();
 
-        if(!StringUtils.hasText(username)){
+        if(!StringUtils.hasText(account)){
             mv.addObject("ERROR_CODE","LOGIN_ER_01"); //用户名为空
             mv.setViewName("login");
             return mv;
@@ -54,7 +54,7 @@ public class LoginController {
             return mv;
         }
 
-        AuthenticationToken token = new UsernamePasswordToken(username.trim(),password);
+        AuthenticationToken token = new UsernamePasswordToken(account.trim(),password);
         try{
             subject.login(token);
         }catch (AuthenticationException ex){

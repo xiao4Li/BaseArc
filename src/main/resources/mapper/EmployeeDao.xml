@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baseArc.dao.EmployeePoDao">
+    <resultMap id="employeePoMap" type="com.baseArc.po.EmployeePo">
+        <id column="_ID" property="id"/>
+        <result column="_NAME" property="name"/>
+        <result column="_EMAIL" property="email"/>
+        <result column="_TEL" property="tel"/>
+        <result column="_NO" property="no"/>
+        <result column="_ICON_ID" property="iconId"/>
+        <result column="_ACCOUNT" property="account"/>
+        <result column="_PASSWORD" property="password"/>
+        <result column="_SALT" property="salt"/>
+        <result column="_STATUS" property="status"/>
+    </resultMap>
+    <select id="listEmployee" resultMap="employeePoMap">
+        SELECT * FROM SYS_EMPLOYEE
+    </select>
+    <select id="findEmployeeByAccount" resultMap="employeePoMap">
+        SELECT * FROM SYS_EMPLOYEE WHERE _ACCOUNT = #{account}
+    </select>
+</mapper>

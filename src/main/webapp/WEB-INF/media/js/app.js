@@ -131,7 +131,7 @@ var App = function () {
     //* BEGIN:CORE HANDLERS *//
     // this function handles responsive layout on screen size resize or mobile device rotate.
   
-    var handleSidebarAndContentHeight = function () {
+    var handleSidebarAndContentHeight = function (_change) {
         var content = $('.page-content');
         var sidebar = $('.page-sidebar');
         var body = $('body');
@@ -150,7 +150,11 @@ var App = function () {
             }
             if (height >= content.height()) {
                 content.attr('style', 'min-height:' + height + 'px !important');
-            } 
+            }else{
+                if(_change){
+                    content.attr('style', 'min-height:' + ($(window).height() - 80) + 'px !important');
+                }
+            }
         }          
     }
 
@@ -174,13 +178,13 @@ var App = function () {
                     jQuery('.arrow', jQuery(this)).removeClass("open");
                     jQuery(this).parent().removeClass("open");
                     sub.slideUp(200, function () {
-                            handleSidebarAndContentHeight();
+                            handleSidebarAndContentHeight(true);
                         });
                 } else {
                     jQuery('.arrow', jQuery(this)).addClass("open");
                     jQuery(this).parent().addClass("open");
                     sub.slideDown(200, function () {
-                            handleSidebarAndContentHeight();
+                            handleSidebarAndContentHeight(true);
                         });
                 }
 
@@ -652,7 +656,7 @@ var App = function () {
                 $("body").removeClass("page-footer-fixed");
             }
 
-            handleSidebarAndContentHeight(); // fix content height            
+            handleSidebarAndContentHeight(); // fix content height
             handleFixedSidebar(); // reinitialize fixed sidebar
             handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
         }

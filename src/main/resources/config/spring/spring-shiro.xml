@@ -5,7 +5,7 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="userRealm" />
+        <property name="realm" ref="employeeRealm" />
     </bean>
     <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
@@ -25,7 +25,7 @@
         </property>
     </bean>
 
-    <bean id="userRealm" class="com.baseArc.shiro.UserRealm">
+    <bean id="employeeRealm" class="com.baseArc.shiro.EmployeeRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="authenticationCachingEnabled" value="false"/>
         <property name="authorizationCachingEnabled" value="false"/>

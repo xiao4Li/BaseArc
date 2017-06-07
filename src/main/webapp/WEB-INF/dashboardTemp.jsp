@@ -59,7 +59,7 @@
 	<link rel="shortcut icon" href="media/image/favicon.ico" />
 </head>
 <body class="page-header-fixed">
-<jsp:include page="header.jsp" flush="true"/>
+	<jsp:include page="header.jsp" flush="true"/>
 <div class="page-container">
 	<!--包含导航条-->
 	<jsp:include page="nav.jsp" flush="true"/>

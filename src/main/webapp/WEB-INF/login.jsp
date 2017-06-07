@@ -138,7 +138,7 @@
             </div>
         </c:if>
 
-        <input type="text" name="username" class="input-block-level" placeholder="用户名">
+        <input type="text" name="account" class="input-block-level" placeholder="用户名">
         <input type="password" name="password" class="input-block-level" placeholder="密码">
         <div>
             <span class="check_code_box">

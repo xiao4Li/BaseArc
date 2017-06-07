@@ -1,7 +1,7 @@
 package com.baseArc.shiro;
 
-import com.baseArc.po.UserPo;
-import com.baseArc.service.UserService;
+import com.baseArc.po.EmployeePo;
+import com.baseArc.service.EmployeeService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -19,13 +19,13 @@ import java.util.Set;
  * @Description: [ xxxx ]
  * @Version: 1.0
  */
-public class UserRealm extends AuthorizingRealm {
+public class EmployeeRealm extends AuthorizingRealm {
     @Autowired
-    private UserService userService;
+    private EmployeeService employeeService;
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String username = (String) principalCollection.getPrimaryPrincipal();
-        UserPo userPo = userService.findByUsername(username);
+        String account = (String) principalCollection.getPrimaryPrincipal();
+        EmployeePo employeePo = employeeService.findEmployeeByAccount(account);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //authorizationInfo.setRoles(userAuthService.findStringRoles(userPo));
         Set<String> roleSet = new HashSet<>();
@@ -42,10 +42,10 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
-        String username = upToken.getUsername().trim();
-        UserPo userPo = userService.findByUsername(username);
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userPo.getUsername(),userPo.getPassword(),getName());
-        info.setCredentialsSalt(ByteSource.Util.bytes(userPo.getSalt()));
+        String account = upToken.getUsername().trim();
+        EmployeePo employeePo = employeeService.findEmployeeByAccount(account);
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(employeePo.getAcount(),employeePo.getPassword(),getName());
+        info.setCredentialsSalt(ByteSource.Util.bytes(employeePo.getSalt()));
         return info;
     }
 }
