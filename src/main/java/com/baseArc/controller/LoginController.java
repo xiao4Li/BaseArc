@@ -1,5 +1,9 @@
 package com.baseArc.controller;
 
+import com.baseArc.po.MenuPo;
+import com.baseArc.service.MenuService;
+import com.baseArc.utils.SystemConstants;
+import com.baseArc.vo.MenuVo;
 import com.google.code.kaptcha.Constants;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -7,11 +11,14 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * @Author: liqi@youbangsoft.com
@@ -21,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class LoginController {
+    @Autowired
+    private MenuService menuService;
     @RequestMapping(value="doLogin",method = RequestMethod.POST)
     public ModelAndView doLogin(String account, String password, String identifyingCode){
         ModelAndView mv = new ModelAndView();
@@ -57,6 +66,11 @@ public class LoginController {
         AuthenticationToken token = new UsernamePasswordToken(account.trim(),password);
         try{
             subject.login(token);
+            //设置菜单
+            List<MenuPo> list = menuService.listMenu();
+            List<MenuVo> menus = menuService.constructMenu(list);
+            session.setAttribute(SystemConstants.SYS_MENU,menus);
+
         }catch (AuthenticationException ex){
             mv.addObject("ERROR_CODE","LOGIN_ER_05"); //用户名密码错误
             mv.setViewName("login");
@@ -84,5 +98,4 @@ public class LoginController {
         subject.logout();
         return "login";
     }
-
 }

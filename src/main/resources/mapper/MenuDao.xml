@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baseArc.dao.MenuDao">
+    <resultMap id="menuPoMap" type="com.baseArc.po.MenuPo">
+        <id property="id" column="_ID"/>
+        <result property="name" column="_NAME"/>
+        <result property="uri" column="_URI"/>
+        <result property="parentId" column="_PARENT_ID"/>
+        <result property="order" column="_ORDER"/>
+        <result property="type" column="_TYPE"/>
+    </resultMap>
+    <select id="listMenu" resultMap="menuPoMap">
+        SELECT * FROM SYS_MENU
+    </select>
+</mapper>
