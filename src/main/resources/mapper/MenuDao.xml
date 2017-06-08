@@ -6,12 +6,12 @@
     <resultMap id="menuPoMap" type="com.baseArc.po.MenuPo">
         <id property="id" column="_ID"/>
         <result property="name" column="_NAME"/>
-        <result property="uri" column="_URI"/>
+        <result property="path" column="_PATH"/>
         <result property="parentId" column="_PARENT_ID"/>
         <result property="order" column="_ORDER"/>
         <result property="type" column="_TYPE"/>
     </resultMap>
     <select id="listMenu" resultMap="menuPoMap">
-        SELECT * FROM SYS_MENU
+        SELECT * FROM SYS_MENU ORDER BY _ORDER
     </select>
 </mapper>

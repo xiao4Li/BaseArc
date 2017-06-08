@@ -2,7 +2,7 @@ package com.baseArc.controller;
 
 import com.baseArc.po.MenuPo;
 import com.baseArc.service.MenuService;
-import com.baseArc.utils.SystemConstants;
+import com.baseArc.support.SystemConstants;
 import com.baseArc.vo.MenuVo;
 import com.google.code.kaptcha.Constants;
 import org.apache.shiro.SecurityUtils;

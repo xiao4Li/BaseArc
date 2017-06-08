@@ -1,4 +1,4 @@
-package com.baseArc.utils;
+package com.baseArc.support;
 
 /**
  * @Author: liqi@youbangsoft.com
@@ -8,4 +8,5 @@ package com.baseArc.utils;
  */
 public class SystemConstants {
     public static final String SYS_MENU = "SYS_MENU";
+    public static final String SYS_MENU_PATH_SEPARATOR = "/";
 }

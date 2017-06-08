@@ -9,10 +9,21 @@ package com.baseArc.po;
 public class MenuPo {
     private String id;
     private String name;
-    private String uri;
+    //private String uri;
     private String parentId;
     private Integer order;
     private Integer type;
+
+    private String path;
+
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public String getId() {
         return id;
@@ -28,14 +39,6 @@ public class MenuPo {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
     }
 
     public String getParentId() {

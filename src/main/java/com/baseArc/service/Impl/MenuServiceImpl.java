@@ -33,6 +33,7 @@ public class MenuServiceImpl implements MenuService {
         for(MenuPo menu : list){
             if(!StringUtils.hasText(menu.getParentId())){
                 MenuVo menuVo = new MenuVo(menu);
+                menuVo.setLevel(1);
                 levelOne.add(menuVo);
             }
         }
@@ -41,7 +42,9 @@ public class MenuServiceImpl implements MenuService {
             String id = menuVo.getId();
             for(MenuPo menu : list){
                 if(id.equals(menu.getParentId())){
-                    menuVo.getSubMenu().add(menu);
+                    MenuVo subMenuVo = new MenuVo(menu);
+                    subMenuVo.setLevel(2);
+                    menuVo.getSubMenu().add(subMenuVo);
                 }
             }
         }

@@ -62,7 +62,9 @@
 	<jsp:include page="header.jsp" flush="true"/>
 <div class="page-container">
 	<!--包含导航条-->
-	<jsp:include page="nav.jsp" flush="true"/>
+	<jsp:include page="nav.jsp" flush="true">
+		<jsp:param name="current_uri" value=""/>
+	</jsp:include>
 	<div class="page-content">
 		<div class="container-fluid">
 			<!--包含标题 面包屑-->

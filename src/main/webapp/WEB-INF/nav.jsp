@@ -1,52 +1,81 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="page-sidebar nav-collapse collapse" >
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="org.apache.shiro.SecurityUtils" %>
+<%@ page import="com.baseArc.support.SystemConstants" %>
+<%@ page import="com.baseArc.vo.MenuVo" %>
+<%@ page import="java.util.List" %>
 
-    <!-- BEGIN SIDEBAR MENU -->
-
+<div class="page-sidebar nav-collapse collapse">
     <ul id="page_nav" class="page-sidebar-menu" style="overflow-x:hidden; overflow-y: auto;">
-
-        <!--隐藏显示按钮-->
+        <!--隐藏显示 按钮-->
         <li>
-
-            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
             <div class="sidebar-toggler hidden-phone"></div>
+        </li>
+        <%
+            List<MenuVo> list = (List<MenuVo>) SecurityUtils.getSubject().getSession().getAttribute(SystemConstants.SYS_MENU);
+            pageContext.setAttribute("menus", list);
+        %>
+        <!-- BEGIN SIDEBAR MENU -->
+        <c:forEach var="menu" items="${menus}" varStatus="status">
+            <c:choose>
+                <c:when test="${status.first}">
+                    <li class="start active">
+                        <a href="<c:out value="${menu.uri}"/>">
+                            <i class="icon-home"></i>
+                            <span class="title">
+                            <c:out value="${menu.name}"/>
+                        </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                </c:when>
+                <c:when test="${status.last}">
+                    <li class="last">
+                        <c:choose>
+                            <c:when test="${not empty menu.subMenu}">
+                                <a href="javascript:;">
+                                    <i class="icon-bar-chart"></i>
+                                    <span class="title">
+                                    <c:out value="${menu.name}"/>
+                                </span>
+                                    <span class="arrow "></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <c:forEach items="${menu.subMenu}" var="submenu">
+                                        <li >
+                                            <a href="<c:out value="${submenu.uri}"/>">
+                                                <c:out value="${submenu.name}"/>
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="<c:out value="${menu.uri}"/>">
+                                    <i class="icon-bar-chart"></i>
+                                    <span class="title">
+                                    <c:out value="${menu.name}"/>
+                                </span>
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="">
+                        <a href="<c:out value="${menu.uri}"/>">
+                            <i class="icon-bar-chart"></i>
+                            <span class="title">
+                            <c:out value="${menu.name}"/>
+                        </span>
+                        </a>
+                    </li>
+                </c:otherwise>
+            </c:choose>
 
-            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            <c:if test="${not empty menu.subMenu}">
 
-        </li>
-        <li class="start active ">
-            <a href="dashboard">
-                <i class="icon-home"></i>
-                <span class="title">首页</span>
-                <span class="selected"></span>
-            </a>
-        </li>
-        <li class="">
-            <a href="javascript:;">
-                <i class="icon-cogs"></i>
-                <span class="title">企业人员权限管理</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="listEmployee">企业人员管理</a>
-                </li>
-                <li >
-                    <a href="layout_boxed_page.html">
-                        Boxed Page</a>
-                </li>
-                <li >
-                    <a href="layout_boxed_not_responsive.html">
-                        Non-Responsive Boxed Layout</a>
-                </li>
-            </ul>
-        </li>
-        <li class="last ">
-            <a href="charts.html">
-                <i class="icon-bar-chart"></i>
-                <span class="title">Visual Charts</span>
-            </a>
-        </li>
+            </c:if>
+        </c:forEach>
     </ul>
 </div>
