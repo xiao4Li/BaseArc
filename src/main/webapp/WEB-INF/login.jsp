@@ -103,22 +103,6 @@
             margin-bottom: 20px;
             color:red;
         }
-        #login_submit{
-            color: #fff;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-            background-color: #faa732;
-            background-image: -moz-linear-gradient(top,#fbb450,#f89406);
-            background-image: -webkit-gradient(linear,0 0,0 100%,from(#fbb450),to(#f89406));
-            background-image: -webkit-linear-gradient(top,#fbb450,#f89406);
-            background-image: -o-linear-gradient(top,#fbb450,#f89406);
-            background-image: linear-gradient(to bottom,#fbb450,#f89406);
-            background-repeat: repeat-x;
-            border-color: #f89406 #f89406 #ad6704;
-            border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450',endColorstr='#fff89406',GradientType=0);
-            filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-        }
-
     </style>
 
 </head>
@@ -148,7 +132,7 @@
                 <img title="点击更换" id="img_identifyingCode" src="captchaController/identifyingCode" onclick="refreshIdentifyingCode()">
             </span>
         </div>
-        <button id="login_submit" class="btn btn-warning btn-large btn-block" type="submit">登 录</button>
+        <button id="login_submit" class="btn yellow btn-large btn-block" type="submit">登 录</button>
     </form>
 </div> <!-- /container -->
 
