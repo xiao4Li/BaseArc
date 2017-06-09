@@ -63,7 +63,7 @@
 <div class="page-container">
 	<!--包含导航条-->
 	<jsp:include page="nav.jsp" flush="true">
-		<jsp:param name="current_uri" value=""/>
+		<jsp:param name="path" value="dashboard"/>
 	</jsp:include>
 	<div class="page-content">
 		<div class="container-fluid">

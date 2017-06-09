@@ -14,11 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
  * @Version:    [v1.0] 
  **/
 @Controller
+@RequestMapping("emplmanage")
 public class EmployeeController {
-    @RequestMapping("listEmployee")
+    @RequestMapping("employee")
     public ModelAndView listEmployee(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("dashboardTemp");
+        mv.setViewName("employee");
         return mv;
     }
 }
