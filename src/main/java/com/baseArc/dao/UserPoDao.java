@@ -1,6 +1,6 @@
 package com.baseArc.dao;
 
-import com.baseArc.po.EmployeePo;
+import com.baseArc.po.UserPo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,8 +14,8 @@ import java.util.List;
  * @UpdateRemark: []
  * @Version:    [v1.0] 
  **/
-public interface EmployeePoDao {
-    List<EmployeePo> listEmployee();
+public interface UserPoDao {
+    List<UserPo> listEmployee();
 
-    EmployeePo findEmployeeByAccount(@Param("account") String account);
+    UserPo findEmployeeByAccount(@Param("account") String account);
 }

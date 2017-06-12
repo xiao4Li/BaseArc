@@ -1,7 +1,7 @@
 package com.baseArc.shiro;
 
-import com.baseArc.po.EmployeePo;
-import com.baseArc.service.EmployeeService;
+import com.baseArc.po.UserPo;
+import com.baseArc.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -19,13 +19,13 @@ import java.util.Set;
  * @Description: [ xxxx ]
  * @Version: 1.0
  */
-public class EmployeeRealm extends AuthorizingRealm {
+public class UserRealm extends AuthorizingRealm {
     @Autowired
-    private EmployeeService employeeService;
+    private UserService userService;
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         String account = (String) principalCollection.getPrimaryPrincipal();
-        EmployeePo employeePo = employeeService.findEmployeeByAccount(account);
+        UserPo userPo = userService.findEmployeeByAccount(account);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //authorizationInfo.setRoles(userAuthService.findStringRoles(userPo));
         Set<String> roleSet = new HashSet<>();
@@ -43,9 +43,9 @@ public class EmployeeRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
         String account = upToken.getUsername().trim();
-        EmployeePo employeePo = employeeService.findEmployeeByAccount(account);
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(employeePo.getAcount(),employeePo.getPassword(),getName());
-        info.setCredentialsSalt(ByteSource.Util.bytes(employeePo.getSalt()));
+        UserPo userPo = userService.findEmployeeByAccount(account);
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userPo.getAcount(), userPo.getPassword(),getName());
+        info.setCredentialsSalt(ByteSource.Util.bytes(userPo.getSalt()));
         return info;
     }
 }

@@ -25,7 +25,7 @@
         </property>
     </bean>
 
-    <bean id="employeeRealm" class="com.baseArc.shiro.EmployeeRealm">
+    <bean id="employeeRealm" class="com.baseArc.shiro.UserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="authenticationCachingEnabled" value="false"/>
         <property name="authorizationCachingEnabled" value="false"/>

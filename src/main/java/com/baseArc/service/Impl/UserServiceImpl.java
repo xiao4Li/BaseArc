@@ -1,8 +1,8 @@
 package com.baseArc.service.Impl;
 
-import com.baseArc.dao.EmployeePoDao;
-import com.baseArc.po.EmployeePo;
-import com.baseArc.service.EmployeeService;
+import com.baseArc.dao.UserPoDao;
+import com.baseArc.po.UserPo;
+import com.baseArc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +18,16 @@ import java.util.List;
  * @Version:    [v1.0] 
  **/
 @Service("employeeService")
-public class EmployeeServiceImpl implements EmployeeService {
+public class UserServiceImpl implements UserService {
     @Autowired
-    private EmployeePoDao employeePoDao;
+    private UserPoDao userPoDao;
     @Override
-    public List<EmployeePo> listEmployee() {
-        return employeePoDao.listEmployee();
+    public List<UserPo> listEmployee() {
+        return userPoDao.listEmployee();
     }
 
     @Override
-    public EmployeePo findEmployeeByAccount(String account) {
-        return employeePoDao.findEmployeeByAccount(account);
+    public UserPo findEmployeeByAccount(String account) {
+        return userPoDao.findEmployeeByAccount(account);
     }
 }

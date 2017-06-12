@@ -9,7 +9,7 @@ package com.baseArc.po;
  * @UpdateRemark: []
  * @Version:    [v1.0] 
  **/
-public class EmployeePo {
+public class UserPo {
     private String id;
     private String name;
     private String email;

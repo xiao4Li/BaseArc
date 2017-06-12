@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  **/
 @Controller
 @RequestMapping("emplmanage")
-public class EmployeeController {
+public class UserController {
     @RequestMapping("employee")
     public ModelAndView listEmployee(){
         ModelAndView mv = new ModelAndView();
