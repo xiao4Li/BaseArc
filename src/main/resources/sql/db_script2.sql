@@ -197,7 +197,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 --插入基本资源
 --  INSERT INTO SYS_RESOURCE (
 --              _ID,     _NAME ,  _TYPE ,  _URL,      _PERMISSION ,_ICON,_PARENT_ID,_STATUS
---  ) VALUES ('MENU_01','首页',     0,    'dashboard',  NULL,      NULL, NULL,0);
+--  ) VALUES ('MENU_01','首页',     0,    'dashboard',  NULL,      'icon-home', NULL,0);
 --
 --   INSERT INTO SYS_RESOURCE (
 --              _ID,     _NAME ,  _TYPE ,  _URL,      _PERMISSION ,_ICON,_PARENT_ID,_STATUS
