@@ -7,12 +7,14 @@ package com.baseArc.po;
  * @Version: 1.0
  */
 public class ResourcePo {
-    private String id; //编号
-    private String name; //资源名称
-    private Integer type; //资源类型
-    private String url; //资源路径
-    private String permission; //权限字符串
-    private String icon;//资源icon
+    private String id;
+    private String name;
+    private Integer type;
+    private String url;
+    private String permission;
+    private String icon;
+    private String parentId;
+    private Integer status;
 
     public String getId() {
         return id;
@@ -54,6 +56,14 @@ public class ResourcePo {
         this.permission = permission;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     public String getParentId() {
         return parentId;
     }
@@ -69,16 +79,4 @@ public class ResourcePo {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    private String parentId; //父编号
-    private Integer status;
-
 }

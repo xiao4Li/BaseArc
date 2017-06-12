@@ -14,6 +14,6 @@ import java.util.List;
  * @Version:    [v1.0] 
  **/
 public interface UserService {
-    List<UserPo> listEmployee();
-    UserPo findEmployeeByAccount(String account);
+    List<UserPo> listUser();
+    UserPo findUserByAccount(String account);
 }

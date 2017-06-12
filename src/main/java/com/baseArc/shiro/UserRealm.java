@@ -25,7 +25,7 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         String account = (String) principalCollection.getPrimaryPrincipal();
-        UserPo userPo = userService.findEmployeeByAccount(account);
+        UserPo userPo = userService.findUserByAccount(account);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //authorizationInfo.setRoles(userAuthService.findStringRoles(userPo));
         Set<String> roleSet = new HashSet<>();
@@ -43,7 +43,7 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
         String account = upToken.getUsername().trim();
-        UserPo userPo = userService.findEmployeeByAccount(account);
+        UserPo userPo = userService.findUserByAccount(account);
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userPo.getAcount(), userPo.getPassword(),getName());
         info.setCredentialsSalt(ByteSource.Util.bytes(userPo.getSalt()));
         return info;

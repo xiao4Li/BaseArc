@@ -15,7 +15,7 @@ import java.util.List;
  * @Version:    [v1.0] 
  **/
 public interface UserPoDao {
-    List<UserPo> listEmployee();
+    List<UserPo> listUser();
 
-    UserPo findEmployeeByAccount(@Param("account") String account);
+    UserPo findUserByAccount(@Param("account") String account);
 }

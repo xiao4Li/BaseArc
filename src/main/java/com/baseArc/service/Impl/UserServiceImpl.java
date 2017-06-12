@@ -22,12 +22,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserPoDao userPoDao;
     @Override
-    public List<UserPo> listEmployee() {
-        return userPoDao.listEmployee();
+    public List<UserPo> listUser() {
+        return userPoDao.listUser();
     }
 
     @Override
-    public UserPo findEmployeeByAccount(String account) {
-        return userPoDao.findEmployeeByAccount(account);
+    public UserPo findUserByAccount(String account) {
+        return userPoDao.findUserByAccount(account);
     }
 }

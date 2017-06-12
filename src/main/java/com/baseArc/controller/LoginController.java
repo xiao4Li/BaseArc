@@ -1,9 +1,9 @@
 package com.baseArc.controller;
 
-import com.baseArc.po.MenuPo;
-import com.baseArc.service.MenuService;
+import com.baseArc.po.ResourcePo;
+import com.baseArc.service.ResourceService;
 import com.baseArc.support.SystemConstants;
-import com.baseArc.vo.MenuVo;
+import com.baseArc.vo.ResourceVo;
 import com.google.code.kaptcha.Constants;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -29,7 +29,7 @@ import java.util.List;
 @Controller
 public class LoginController {
     @Autowired
-    private MenuService menuService;
+    private ResourceService menuService;
     @RequestMapping(value="doLogin",method = RequestMethod.POST)
     public ModelAndView doLogin(String account, String password, String identifyingCode){
         ModelAndView mv = new ModelAndView();
@@ -67,8 +67,8 @@ public class LoginController {
         try{
             subject.login(token);
             //设置菜单
-            List<MenuPo> list = menuService.listMenu();
-            List<MenuVo> menus = menuService.constructMenu(list);
+            List<ResourcePo> list = menuService.listResource();
+            List<ResourceVo> menus = menuService.constructResource(list);
             session.setAttribute(SystemConstants.SYS_MENU,menus);
 
         }catch (AuthenticationException ex){

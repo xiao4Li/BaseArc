@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baseArc.dao.ResourceDao">
+    <resultMap id="resourcePoMap" type="com.baseArc.po.ResourcePo">
+        <id property="id" column="_ID"/>
+        <result property="name" column="_NAME"/>
+        <result property="type" column="_TYPE"/>
+        <result property="url" column="_URL"/>
+        <result property="permission" column="_PERMISSION"/>
+        <result property="icon" column="_ICON"/>
+        <result property="parentId" column="_PARENT_ID"/>
+        <result property="status" column="_STATUS"/>
+    </resultMap>
+    <select id="listResource" resultMap="menuPoMap">
+        SELECT * FROM SYS_RESOURCE ORDER BY _ID
+    </select>
+</mapper>

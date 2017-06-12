@@ -14,11 +14,12 @@
         <result column="_PASSWORD" property="password"/>
         <result column="_SALT" property="salt"/>
         <result column="_STATUS" property="status"/>
+        <result column="_DEPT_ID" property="deptId"/>
     </resultMap>
-    <select id="listEmployee" resultMap="employeePoMap">
-        SELECT * FROM SYS_EMPLOYEE
+    <select id="listUser" resultMap="employeePoMap">
+        SELECT * FROM SYS_USER
     </select>
-    <select id="findEmployeeByAccount" resultMap="employeePoMap">
-        SELECT * FROM SYS_EMPLOYEE WHERE _ACCOUNT = #{account}
+    <select id="findUserByAccount" resultMap="employeePoMap">
+        SELECT * FROM SYS_USER WHERE _ACCOUNT = #{account}
     </select>
 </mapper>

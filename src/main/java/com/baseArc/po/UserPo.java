@@ -21,6 +21,8 @@ public class UserPo {
     private String salt;
     private String status;
 
+    private String deptId;
+
     public String getId() {
         return id;
     }
@@ -99,5 +101,21 @@ public class UserPo {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
     }
 }

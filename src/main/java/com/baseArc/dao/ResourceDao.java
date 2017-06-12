@@ -1,6 +1,6 @@
 package com.baseArc.dao;
 
-import com.baseArc.po.MenuPo;
+import com.baseArc.po.ResourcePo;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ import java.util.List;
  * @Description: [  ]
  * @Version: 1.0
  */
-public interface MenuDao {
-    List<MenuPo> listMenu();
+public interface ResourceDao {
+    List<ResourcePo> listResource();
 }

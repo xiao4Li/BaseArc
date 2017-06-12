@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="org.apache.shiro.SecurityUtils" %>
 <%@ page import="com.baseArc.support.SystemConstants" %>
-<%@ page import="com.baseArc.vo.MenuVo" %>
+<%@ page import="com.baseArc.vo.ResourceVo" %>
 <%@ page import="java.util.List" %>
 
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
@@ -13,7 +13,7 @@
             <div class="sidebar-toggler hidden-phone"></div>
         </li>
         <%
-            List<MenuVo> list = (List<MenuVo>) SecurityUtils.getSubject().getSession().getAttribute(SystemConstants.SYS_MENU);
+            List<ResourceVo> list = (List<ResourceVo>) SecurityUtils.getSubject().getSession().getAttribute(SystemConstants.SYS_MENU);
             pageContext.setAttribute("menus", list);
         %>
         <c:set value="${param.path}" var="path" scope="page"/>
@@ -35,7 +35,7 @@
 
 
             <c:choose>
-                <c:when test="${not empty menu.subMenu}">
+                <c:when test="${not empty menu.subResource}">
                     <c:if test="${menu.isActive(path)}">
                         <c:set var="selectedClass" value="arrow open"/>
                     </c:if>
@@ -51,13 +51,13 @@
                     <c:if test="${!menu.isActive(path)}">
                         <c:set var="selectedClass" value=""/>
                     </c:if>
-                    <c:set var="url" value="${basePath}/${menu.path}"/>
+                    <c:set var="url" value="${basePath}/${menu.url}"/>
                 </c:otherwise>
             </c:choose>
 
             <li class="<c:out value="${firstLastClass}"/> <c:out value="${activeClass}"/> ">
                 <a href="<c:out value="${url}"/>">
-                    <i class="icon-home"></i>
+                    <i class="<c:out value="${menu.icon}"/>"></i>
                     <span class="title">
                             <c:out value="${menu.name}"/>
                         </span>
@@ -66,16 +66,16 @@
                 </a>
 
 
-                <c:if test="${not empty menu.subMenu}">
+                <c:if test="${not empty menu.subResource}">
                     <ul class="sub-menu">
-                        <c:forEach var="submenu" items="${menu.subMenu}">
+                        <c:forEach var="submenu" items="${menu.subResource}">
                             <c:set var="submenuActive" value=""/>
                             <c:if test="${submenu.isActive(path)}">
                                 <c:set var="submenuActive" value="active"/>
                             </c:if>
 
                             <li class="<c:out value="${submenuActive}"/>">
-                                <a href="${basePath}/${submenu.path}">
+                                <a href="${basePath}/${submenu.url}">
                                     <c:out value="${submenu.name}"/></a>
                             </li>
                         </c:forEach>
