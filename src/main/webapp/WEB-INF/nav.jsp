@@ -19,6 +19,8 @@
         <c:set value="${param.path}" var="path" scope="page"/>
         <!-- BEGIN SIDEBAR MENU -->
         <c:forEach var="menu" items="${menus}" varStatus="status">
+
+            <c:set var="firstLastClass" value=""/>
             <c:if test="${status.first}">
                 <c:set var="firstLastClass" value="start"/>
             </c:if>
@@ -26,13 +28,11 @@
                 <c:set var="firstLastClass" value="last"/>
             </c:if>
 
+            <c:set var="activeClass" value=""/>
             <c:if test="${menu.isActive(path)}">
                 <c:set var="activeClass" value="active"/>
             </c:if>
 
-            <c:if test="${!menu.isActive(path)}">
-                <c:set var="activeClass" value=""/>
-            </c:if>
 
             <c:choose>
                 <c:when test="${not empty menu.subMenu}">
@@ -61,6 +61,7 @@
                     <span class="title">
                             <c:out value="${menu.name}"/>
                         </span>
+                    <span class="<c:out value="selected"/>"></span>
                     <span class="<c:out value="${selectedClass}"/>"></span>
                 </a>
 

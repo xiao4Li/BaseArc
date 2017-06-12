@@ -16,13 +16,3 @@
 <link href="${basePath}/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
 <link href="${basePath}/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-
-<link href="${basePath}/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
-
-<link href="${basePath}/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-
-<link href="${basePath}/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-<link href="${basePath}/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
-
-<link href="${basePath}/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
