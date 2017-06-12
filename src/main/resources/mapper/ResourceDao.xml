@@ -13,7 +13,7 @@
         <result property="parentId" column="_PARENT_ID"/>
         <result property="status" column="_STATUS"/>
     </resultMap>
-    <select id="listResource" resultMap="menuPoMap">
+    <select id="listResource" resultMap="resourcePoMap">
         SELECT * FROM SYS_RESOURCE ORDER BY _ID
     </select>
 </mapper>

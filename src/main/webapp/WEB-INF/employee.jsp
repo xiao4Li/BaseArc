@@ -36,6 +36,20 @@
 
     <link rel="shortcut icon" href="${basePath}/media/image/favicon.ico" />
 
+    <style>
+        .table th, .table td{
+            line-height: 35px;
+            padding:2px;
+            margin:2px;
+            text-align: center;
+        }
+
+        td .btn{
+            padding:4px 8px;
+
+        }
+    </style>
+
 
 </head>
 <body class="page-header-fixed">

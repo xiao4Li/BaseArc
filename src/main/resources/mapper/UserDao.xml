@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.baseArc.dao.UserPoDao">
-    <resultMap id="employeePoMap" type="com.baseArc.po.UserPo">
+    <resultMap id="userPoMap" type="com.baseArc.po.UserPo">
         <id column="_ID" property="id"/>
         <result column="_NAME" property="name"/>
         <result column="_EMAIL" property="email"/>
@@ -16,10 +16,10 @@
         <result column="_STATUS" property="status"/>
         <result column="_DEPT_ID" property="deptId"/>
     </resultMap>
-    <select id="listUser" resultMap="employeePoMap">
+    <select id="listUser" resultMap="userPoMap">
         SELECT * FROM SYS_USER
     </select>
-    <select id="findUserByAccount" resultMap="employeePoMap">
+    <select id="findUserByAccount" resultMap="userPoMap">
         SELECT * FROM SYS_USER WHERE _ACCOUNT = #{account}
     </select>
 </mapper>
