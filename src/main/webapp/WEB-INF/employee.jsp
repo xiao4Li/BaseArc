@@ -32,6 +32,9 @@
 
     <link rel="stylesheet" href="${basePath}/media/css/DT_bootstrap.css" />
 
+    <link rel="stylesheet" href="${basePath}/media/css/bootstrapValidator.css">
+
+
     <!-- END PAGE LEVEL STYLES -->
 
     <link rel="shortcut icon" href="${basePath}/media/image/favicon.ico" />
@@ -73,13 +76,14 @@
 
 <script src="${basePath}/media/js/app.js"></script>
 
-<script>
-    jQuery(document).ready(function() {
+<script src="${basePath}/media/js/bootstrapValidator.js"></script>
+
+<script type="text/javascript">
+    $(function(){
         App.init();
         var content = $('.page-content');
         content.attr('style', 'min-height:' + ($(window).height() - 80) + 'px !important');
     });
-
 </script>
 </body>
 </html>

@@ -12,304 +12,131 @@
 
 <div class="modal-body">
 
-    <div class="portlet-body form">
+    <form id="user_info_form" action="user/add" class="form-horizontal">
 
-        <!-- BEGIN FORM-->
+        <div class="control-group">
 
-        <form action="#" class="horizontal-form">
+            <label class="control-label">用户名</label>
 
-            <h3 class="form-section">Person Info</h3>
+            <div class="controls">
 
-            <div class="row-fluid">
+                <input name="username" type="text" placeholder="请输入用户名" class="m-wrap medium" />
 
-                <div class="span6 ">
-
-                    <div class="control-group">
-
-                        <label class="control-label" for="firstName">First Name</label>
-
-                        <div class="controls">
-
-                            <input type="text" id="firstName" class="m-wrap span12" placeholder="Chee Kin">
-
-                            <span class="help-block">This is inline help</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
-
-                <div class="span6 ">
-
-                    <div class="control-group error">
-
-                        <label class="control-label" for="lastName">Last Name</label>
-
-                        <div class="controls">
-
-                            <input type="text" id="lastName" class="m-wrap span12" placeholder="Lim">
-
-                            <span class="help-block">This field has error.</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-            <!--/row-->
+        <div class="control-group">
 
-            <div class="row-fluid">
+            <label class="control-label">员工编号</label>
 
-                <div class="span6 ">
+            <div class="controls">
 
-                    <div class="control-group">
+                <input type="text" placeholder="请输入员工编号" class="m-wrap medium" />
 
-                        <label class="control-label">Gender</label>
-
-                        <div class="controls">
-
-                            <select class="m-wrap span12">
-
-                                <option value="">Male</option>
-
-                                <option value="">Female</option>
-
-                            </select>
-
-                            <span class="help-block">Select your gender.</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
-
-                <div class="span6 ">
-
-                    <div class="control-group">
-
-                        <label class="control-label">Date of Birth</label>
-
-                        <div class="controls">
-
-                            <input type="text" class="m-wrap span12" placeholder="dd/mm/yyyy">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-            <!--/row-->
+        <div class="control-group">
 
-            <div class="row-fluid">
+            <label class="control-label">系统账号</label>
 
-                <div class="span6 ">
+            <div class="controls">
 
-                    <div class="control-group">
+                <input type="text" placeholder="请输入系统账号" class="m-wrap medium" />
 
-                        <label class="control-label">Category</label>
-
-                        <div class="controls">
-
-                            <div class="select2-container span12 select2_category" id="s2id_autogen1"><a href="javascript:void(0)" onclick="return false;" class="select2-choice select2-default" tabindex="-1">   <span>Choose a Category</span><abbr class="select2-search-choice-close" style="display: none;"></abbr>   <div><b></b></div></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"><div class="select2-drop select2-with-searchbox" style="display:none">   <div class="select2-search">       <input type="text" autocomplete="off" class="select2-input" tabindex="1">   </div>   <ul class="select2-results">   </ul></div></div><select class="span12 select2_category select2-offscreen" data-placeholder="Choose a Category" tabindex="-1">
-
-                            <option value=""></option>
-
-                            <option value="Category 1">Category 1</option>
-
-                            <option value="Category 2">Category 2</option>
-
-                            <option value="Category 3">Category 5</option>
-
-                            <option value="Category 4">Category 4</option>
-
-                        </select>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
-
-                <div class="span6 ">
-
-                    <div class="control-group">
-
-                        <label class="control-label">Membership</label>
-
-                        <div class="controls">
-
-                            <label class="radio">
-
-                                <div class="radio"><span><input type="radio" name="optionsRadios2" value="option1"></span></div>
-
-                                Free
-
-                            </label>
-
-                            <label class="radio">
-
-                                <div class="radio"><span class="checked"><input type="radio" name="optionsRadios2" value="option2" checked=""></span></div>
-
-                                Professional
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-            <!--/row-->
+        <div class="control-group">
 
-            <h3 class="form-section">Address</h3>
+            <label class="control-label">初始密码</label>
 
-            <div class="row-fluid">
+            <div class="controls">
 
-                <div class="span12 ">
+                <input type="text" placeholder="请输入密码" class="m-wrap medium" />
 
-                    <div class="control-group">
-
-                        <label class="control-label">Street</label>
-
-                        <div class="controls">
-
-                            <input type="text" class="m-wrap span12">
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-            <div class="row-fluid">
+        <div class="control-group">
 
-                <div class="span6 ">
+            <label class="control-label">确认密码</label>
 
-                    <div class="control-group">
+            <div class="controls">
 
-                        <label class="control-label">City</label>
+                <input type="text" placeholder="请输入密码" class="m-wrap medium" />
 
-                        <div class="controls">
-
-                            <input type="text" class="m-wrap span12">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
-
-                <div class="span6 ">
-
-                    <div class="control-group">
-
-                        <label class="control-label">State</label>
-
-                        <div class="controls">
-
-                            <input type="text" class="m-wrap span12">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-            <!--/row-->
+        <div class="control-group">
 
-            <div class="row-fluid">
+            <label class="control-label">邮件地址</label>
 
-                <div class="span6 ">
+            <div class="controls">
 
-                    <div class="control-group">
+                <input name="email" type="text" placeholder="请输入邮件地址" class="m-wrap medium" />
 
-                        <label class="control-label">Post Code</label>
-
-                        <div class="controls">
-
-                            <input type="text" class="m-wrap span12">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
-
-                <div class="span6 ">
-
-                    <div class="control-group">
-
-                        <label class="control-label">Country</label>
-
-                        <div class="controls">
-
-                            <select class="m-wrap span12"></select>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--/span-->
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-            <div class="form-actions">
+        <div class="control-group">
 
-                <button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
+            <label class="control-label">电话号码</label>
 
-                <button type="button" class="btn">Cancel</button>
+            <div class="controls">
+
+                <input type="text" placeholder="请输入电话号码" class="m-wrap medium" />
+
+                <span class="help-inline"></span>
 
             </div>
+        </div>
 
-        </form>
+        <div class="control-group">
 
-        <!-- END FORM-->
+            <label class="control-label">所属部门</label>
 
-    </div>
+            <div class="controls">
+
+                <input type="text" placeholder="请输选择所属部门" class="m-wrap medium" />
+
+                <span class="help-inline"></span>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+
+            <label class="control-label">头像</label>
+
+            <div class="controls">
+
+                <input type="text" placeholder="请输入头像" class="m-wrap medium" />
+
+                <span class="help-inline"></span>
+
+            </div>
+        </div>
+
+    </form>
 
 </div>
 
 <div class="modal-footer">
-
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-
-    <button class="btn green btn-primary" data-dismiss="modal">Save changes</button>
-
+    <button id="user_info_form_submit" class="btn green btn-primary" data-dismiss="modal">确定</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 </div>
-
 </div>
