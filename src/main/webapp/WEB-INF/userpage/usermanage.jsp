@@ -22,23 +22,7 @@
     <meta content="" name="description" />
 
     <meta content="" name="author" />
-    <jsp:include page="static_css.jsp"/>
-
-    <!-- END GLOBAL MANDATORY STYLES -->
-
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <link rel="stylesheet" type="text/css" href="${basePath}/media/css/select2_metro.css" />
-
-    <link rel="stylesheet" href="${basePath}/media/css/DT_bootstrap.css" />
-
-    <link rel="stylesheet" href="${basePath}/media/css/bootstrapValidator.css">
-
-
-    <!-- END PAGE LEVEL STYLES -->
-
-    <link rel="shortcut icon" href="${basePath}/media/image/favicon.ico" />
-
+    <jsp:include page="../static_css.jsp"/>
     <style>
         .table th, .table td{
             line-height: 35px;
@@ -56,33 +40,52 @@
 
 </head>
 <body class="page-header-fixed">
-<jsp:include page="header.jsp" flush="true"/>
+<jsp:include page="../header.jsp" flush="true"/>
 <div class="page-container">
     <!--包含导航条-->
-    <jsp:include page="nav.jsp" flush="true">
-        <jsp:param name="path" value="emplmanage/employee"/>
+    <jsp:include page="../nav.jsp" flush="true">
+        <jsp:param name="path" value="usermanage/user"/>
     </jsp:include>
     <div class="page-content">
         <div class="container-fluid">
             <!--包含标题 面包屑-->
-            <jsp:include page="title.jsp" flush="true"/>
-            <jsp:include page="employeeContent.jsp" flush="true"/>
+            <jsp:include page="../title.jsp" flush="true"/>
+            <jsp:include page="usergrid.jsp" flush="true"/>
         </div>
     </div>
 </div>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 
-<jsp:include page="static_js.jsp"/>
+<jsp:include page="../static_js.jsp"/>
 
 <script src="${basePath}/media/js/app.js"></script>
 
-<script src="${basePath}/media/js/bootstrapValidator.js"></script>
+<script src="${basePath}/media/js/jquery.validate.js"></script>
 
 <script type="text/javascript">
     $(function(){
         App.init();
         var content = $('.page-content');
         content.attr('style', 'min-height:' + ($(window).height() - 80) + 'px !important');
+
+        $('#user_form').validate({
+            onfocusout: function( element ) {
+                $(element).valid();
+            },
+            rules:{
+                username:{
+                    required: true,
+                    minlength: 4
+                }
+            },
+            messages: {
+                username: {
+                    required: "用户名不能为空",
+                    minlength: "用户名的最小长度为4"
+                }
+            }
+        });
+
     });
 </script>
 </body>

@@ -74,5 +74,5 @@
 </div>
 
 <!--引入user info-->
-<jsp:include page="user/userInfo.jsp"/>
+<jsp:include page="userform.jsp"/>
 

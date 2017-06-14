@@ -12,7 +12,7 @@
 
 <div class="modal-body">
 
-    <form id="user_info_form" action="user/add" class="form-horizontal">
+    <form id="user_form" action="user/add" class="form-horizontal">
 
         <div class="control-group">
 
