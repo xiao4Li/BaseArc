@@ -1,137 +1,94 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div id="sys_user_info" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="sys_user_info" class="modal hide fade modal-header"  data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
 
 <div class="modal-header">
 
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
 
-    <h6 id="">用户信息</h6>
+    <h4 id="">用户信息</h4>
 
 </div>
 
 <div class="modal-body">
 
-    <form id="user_form" action="user/add" class="form-horizontal">
+    <div class="row-fluid">
+        <div class="span12">
+            <form style="margin:0;padding:0;" id="user_form">
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="username">姓名</label>
+                    </div>
+                    <div class="span5" ><input id="username" name="username" type="text" placeholder="请输入姓名" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
 
-        <div class="control-group">
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="no">员工编号</label>
+                    </div>
+                    <div class="span5" ><input id="no"   name="no" type="text" placeholder="请输入编号" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
 
-            <label class="control-label">用户名</label>
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="account">系统账号</label>
+                    </div>
+                    <div class="span5" ><input   name="account" id="account" type="text" placeholder="请输入系统账号" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
 
-            <div class="controls">
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="password">密码</label>
+                    </div>
+                    <div class="span5" ><input id="password"  name="password" type="password" placeholder="请输入密码" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
 
-                <input name="username" type="text" placeholder="请输入用户名" class="m-wrap medium" />
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="repassword">确认密码</label>
+                    </div>
+                    <div class="span5" ><input id="repassword"  name="repassword" type="password" placeholder="请输入确认密码" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
 
-                <span class="help-inline"></span>
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="email">邮件地址</label>
+                    </div>
+                    <div class="span5" ><input  id="email"  name="email" type="text" placeholder="请输入邮件地址" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
 
-            </div>
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="tel">电话号码</label>
+                    </div>
+                    <div class="span5" ><input id="tel"  name="tel" type="text" placeholder="请输入电话号码" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
+
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="dept">所属部门</label>
+                    </div>
+                    <div class="span5" ><input  id="dept" name="dept" type="text" placeholder="请输入所属部门" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
+
+                <div class="row">
+                    <div class="help-inline span4">
+                        <label style="text-align: right" for="icon">头像</label>
+                    </div>
+                    <div class="span5" ><input id="icon"  name="icon" type="text" placeholder="请输入头像" /></div>
+                    <div class="help-inline span3"></div>
+                </div>
+            </form>
         </div>
-
-        <div class="control-group">
-
-            <label class="control-label">员工编号</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输入员工编号" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">系统账号</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输入系统账号" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">初始密码</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输入密码" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">确认密码</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输入密码" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">邮件地址</label>
-
-            <div class="controls">
-
-                <input name="email" type="text" placeholder="请输入邮件地址" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">电话号码</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输入电话号码" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">所属部门</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输选择所属部门" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-        <div class="control-group">
-
-            <label class="control-label">头像</label>
-
-            <div class="controls">
-
-                <input type="text" placeholder="请输入头像" class="m-wrap medium" />
-
-                <span class="help-inline"></span>
-
-            </div>
-        </div>
-
-    </form>
+    </div>
 
 </div>
 

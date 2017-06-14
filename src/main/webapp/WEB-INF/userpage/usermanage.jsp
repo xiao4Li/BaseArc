@@ -35,6 +35,12 @@
             padding:4px 8px;
 
         }
+
+        input.error { border: 1px solid red; }
+        label.error {
+            color: #EA5200;
+            font-size:10px;
+        }
     </style>
 
 
@@ -69,23 +75,87 @@
         content.attr('style', 'min-height:' + ($(window).height() - 80) + 'px !important');
 
         $('#user_form').validate({
+            ignore:"",
+            onkeyup:null,
             onfocusout: function( element ) {
                 $(element).valid();
+            },
+            errorPlacement: function(error, element) {
+                console.log(error);
+                element.parent('div').next('div').html(error);
             },
             rules:{
                 username:{
                     required: true,
-                    minlength: 4
+                    minlength: 2,
+                    maxlength:50
+                },
+                email:{
+                    email:true
+                },
+                tel:{
+                    checkTelNum:true
+                },
+                no:{
+                    required: true
+                },
+                account:{
+                    required: true,
+                    minlength:5,
+                    maxlength:20,
+                    remote:{
+                        type:"POST",
+                        url:"<c:out value="${basePath}"/>/usermanage/checkUserAccountNotExist",
+                        data:{
+                            id:null,
+                            account:function(){ return $('#account').val(); }
+                        }
+                    }
+                },
+                password:{
+                    required: true,
+                    minlength: 6,
+                    maxlength:20
+                },
+                repassword:{
+                    required: true,
+                    equalTo:"#password"
                 }
             },
             messages: {
+                email:{
+                    email:"邮件地址不正确"
+                },
                 username: {
-                    required: "用户名不能为空",
-                    minlength: "用户名的最小长度为4"
+                    required:"姓名不能为空",
+                    minlength:$.validator.format("姓名的最小长度为{0}"),
+                    maxlength:$.validator.format("姓名最大长度为{0}")
+                },
+                no:{
+                    required:"员工编号不能为空"
+                },
+                account:{
+                    required: "系统账号不能为空",
+                    remote:"该系统账号已经存在",
+                    minlength:$.validator.format("系统账号最小长度为{0}"),
+                    maxlength:$.validator.format("系统账号最大长度为{0}")
+                },
+                password:{
+                    required:"密码不能为空",
+                    minlength:$.validator.format("密码最小长度为{0}"),
+                    maxlength:$.validator.format("密码最大长度为{0}")
+                },
+                repassword:{
+                    required: "确认密码不能为空",
+                    equalTo:"密码不匹配"
                 }
             }
         });
-
+        //自定义正则表达示验证手机
+        $.validator.addMethod("checkTelNum",function(value,element,params){
+            var checkTelNum = /^1[0-9]{10}$/;
+            return this.optional(element)||(checkTelNum.test(value));
+        },"手机号码格式不正确");
     });
 </script>
 </body>

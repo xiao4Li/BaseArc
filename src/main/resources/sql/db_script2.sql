@@ -215,15 +215,15 @@ VALUES
 
   INSERT INTO SYS_RESOURCE (
              _ID,     _NAME ,  _TYPE ,  _URL,      _PERMISSION ,_ICON,_PARENT_ID,_STATUS
- ) VALUES ('MENU_02','企业员工权限管理',     1,    'emplmanage',  NULL,      'icon-cogs', NULL,0);
+ ) VALUES ('MENU_02','企业员工权限管理',     1,    'usermanage',  NULL,      'icon-cogs', NULL,0);
 
   INSERT INTO SYS_RESOURCE (
              _ID,     _NAME ,  _TYPE ,  _URL,      _PERMISSION ,_ICON,_PARENT_ID,_STATUS
- ) VALUES ('MENU_03','企业员工管理',     0,    'emplmanage/employee',null,  NULL, 'MENU_02',     NULL);
+ ) VALUES ('MENU_03','企业员工管理',     0,    'usermanage/user',null,  NULL, 'MENU_02',     NULL);
 
    INSERT INTO SYS_RESOURCE (
              _ID,     _NAME ,  _TYPE ,  _URL,      _PERMISSION ,  _ICON,_PARENT_ID,_STATUS
- ) VALUES ('MENU_04','企业权限管理',     0,    'emplmanage/permission',  NULL, null,    'MENU_02',   NULL);
+ ) VALUES ('MENU_04','企业权限管理',     0,    'usermanage/permission',  NULL, null,    'MENU_02',   NULL);
 
 INSERT INTO SYS_DICT values ('LOGIN_ER_01','用户名为空');
 
