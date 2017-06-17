@@ -16,10 +16,12 @@
         <property name="successUrl" value="/index" />
         <property name="filterChainDefinitions">
             <value>
+                /pages/** = anon<!--测试用-->
                 /media/** = anon
                 /captchaController/** = anon
                 /doLogin = anon
                 /login = anon
+                /uploadWorkflowController/** = anon<!--测试用-->
                 /** = authc
             </value>
         </property>

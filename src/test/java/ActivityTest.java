@@ -13,20 +13,20 @@ import java.util.List;
 public class ActivityTest {
 
     @Test
-    @Before
+//    @Before
     public void createTable(){
         ProcessEngineConfiguration processEngineConfiguration = ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();
         processEngineConfiguration.setJdbcDriver("com.mysql.jdbc.Driver");
-        processEngineConfiguration.setJdbcUrl("jdbc:mysql://localhost:3306/myactivity?useUnicode=true&characterEncoding=utf8");
+        processEngineConfiguration.setJdbcUrl("jdbc:mysql://localhost:3306/basearc?useUnicode=true&characterEncoding=utf8");
         processEngineConfiguration.setJdbcUsername("root");
-        processEngineConfiguration.setJdbcPassword("123");
+        processEngineConfiguration.setJdbcPassword("");
         /**
          * public static final String DB_SCHEMA_UPDATE_FALSE =
          * "false";不能自动创建表，需要表存在 public static final String
          * DB_SCHEMA_UPDATE_CREATE_DROP = "create-drop";先删除表再创建表 public static
          * final String DB_SCHEMA_UPDATE_TRUE = "true";如果表不存在，自动创建表
          */
-//        processEngineConfiguration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
+        processEngineConfiguration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
         processEngineConfiguration.buildProcessEngine();
     }
 
@@ -34,7 +34,7 @@ public class ActivityTest {
     public void deploy(){
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
-        repositoryService.createDeployment().addClasspathResource("flow.bpmn").name("mySecondFlow").deploy();
+        repositoryService.createDeployment().addClasspathResource("flow.bpmn").name("test").deploy();
     }
 
     private static String businessKey = "123456";
