@@ -45,20 +45,4 @@ public class ResourceVo extends ResourcePo {
     public void setSubResource(List<ResourceVo> subResource) {
         this.subResource = subResource;
     }
-
-    public boolean isActive(String path){
-        //一级菜单只判断前半段path就可以确定一级菜单是否是活动的
-        if(this.getLevel() == 1){
-            String prePath = path.split(SystemConstants.SYS_MENU_PATH_SEPARATOR)[0];
-            if(this.getUrl().equals(prePath)){
-                return true;
-            }
-        }else{
-            //二级菜单需要判断全path才可以确定是不是被选择的菜单
-            if(this.getUrl().equals(path)){
-                return true;
-            }
-        }
-        return false;
-    }
 }

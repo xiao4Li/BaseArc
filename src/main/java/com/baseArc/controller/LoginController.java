@@ -17,7 +17,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -31,7 +33,7 @@ public class LoginController {
     @Autowired
     private ResourceService menuService;
     @RequestMapping(value="doLogin",method = RequestMethod.POST)
-    public ModelAndView doLogin(String account, String password, String identifyingCode){
+    public ModelAndView doLogin(String account, String password, String identifyingCode,HttpSession httpSession){
         ModelAndView mv = new ModelAndView();
 
         if(!StringUtils.hasText(account)){
@@ -54,8 +56,8 @@ public class LoginController {
 
         Subject subject = SecurityUtils.getSubject();
 
-        Session session = subject.getSession();
-        String sessionIdentifyCode = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        Session shiroSession = subject.getSession();
+        String sessionIdentifyCode = (String) shiroSession.getAttribute(Constants.KAPTCHA_SESSION_KEY);
         //检查验证码
         if(!identifyingCode.trim().equals(sessionIdentifyCode)){
             mv.addObject("ERROR_CODE","LOGIN_ER_04"); //验证码不匹配
@@ -69,8 +71,8 @@ public class LoginController {
             //设置菜单
             List<ResourcePo> list = menuService.listResource();
             List<ResourceVo> menus = menuService.constructResource(list);
-            session.setAttribute(SystemConstants.SYS_MENU,menus);
-
+            //session.setAttribute(SystemConstants.SYS_MENU,menus);
+            httpSession.setAttribute("SYS_MENUS",menus);
         }catch (AuthenticationException ex){
             mv.addObject("ERROR_CODE","LOGIN_ER_05"); //用户名密码错误
             mv.setViewName("login");
