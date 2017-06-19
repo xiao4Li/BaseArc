@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://baseArc.parsecode.tag" prefix="parsecode" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,33 +13,10 @@
     <title>钰信诺家</title>
 
     <!-- Le styles -->
-    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-
-    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-
-    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
-
-    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="stylesheet" href="${basePath}/media/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${basePath}/media/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
     <style type="text/css">
         body {
@@ -50,8 +28,8 @@
         .form-signin {
             background-color: rgb(131, 131, 131);
             max-width: 360px;
-            padding: 40px 110px 80px;
-            margin: 120px auto 0;
+            padding: 40px;
+            margin: 40px;
             border: 1px solid #e5e5e5;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
@@ -107,114 +85,41 @@
 
 </head>
 <body>
-<div class="container">
-    <form class="form-signin" action="doLogin" method="post" onsubmit="return validation();">
-        <div class="sys_title">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3" >
+        <form class="form-signin" action="doLogin" method="post" onsubmit="return validation();">
+            <div class="sys_title">
             <span>
-                <img src="media/image/sys_title.png" width="270" height="55">
+                <img src="${basePath}/media/imgs/sys_title.png" width="270" height="55">
             </span>
-        </div>
-        <c:if test="${not empty ERROR_CODE}">
-            <div class="error_info">
+            </div>
+            <c:if test="${not empty ERROR_CODE}">
+                <div class="error_info">
                 <span>
                        <parsecode:pc key="${ERROR_CODE}"/>
                 </span>
-            </div>
-        </c:if>
+                </div>
+            </c:if>
 
-        <input type="text" name="account" class="input-block-level" placeholder="用户名">
-        <input type="password" name="password" class="input-block-level" placeholder="密码">
-        <div>
+            <input type="text" name="account" class="input-block-level" placeholder="用户名">
+            <input type="password" name="password" class="input-block-level" placeholder="密码">
+            <div>
             <span class="check_code_box">
                 <input name="identifyingCode" type="text" class="input-block-level" placeholder="验证码">
             </span>
-            <span class="check_code_img">
+                <span class="check_code_img">
                 <img title="点击更换" id="img_identifyingCode" src="captchaController/identifyingCode" onclick="refreshIdentifyingCode()">
             </span>
-        </div>
-        <button id="login_submit" class="btn yellow btn-large btn-block" type="submit">登 录</button>
-    </form>
+            </div>
+            <button id="login_submit" class="btn yellow btn-large btn-block" type="submit">登 录</button>
+        </form>
+    </div>
+
 </div> <!-- /container -->
 
-
-<!-- END FOOTER -->
-
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-
-<!-- BEGIN CORE PLUGINS -->
-
-<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
-
-<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-
-<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-
-<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-
-<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
-
-<!--[if lt IE 9]>
-
-<script src="media/js/excanvas.min.js"></script>
-
-<script src="media/js/respond.min.js"></script>
-
-<![endif]-->
-
-<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
-
-<!-- END CORE PLUGINS -->
-
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-
-<script src="media/js/jquery.vmap.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.vmap.russia.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.vmap.world.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.vmap.europe.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.vmap.germany.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.vmap.usa.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.vmap.sampledata.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.flot.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.flot.resize.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.pulsate.min.js" type="text/javascript"></script>
-
-<script src="media/js/date.js" type="text/javascript"></script>
-
-<script src="media/js/daterangepicker.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.gritter.js" type="text/javascript"></script>
-
-<script src="media/js/fullcalendar.min.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.easy-pie-chart.js" type="text/javascript"></script>
-
-<script src="media/js/jquery.sparkline.min.js" type="text/javascript"></script>
-
-<!-- END PAGE LEVEL PLUGINS -->
-
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-<script src="media/js/app.js" type="text/javascript"></script>
-
-<script src="media/js/index.js" type="text/javascript"></script>
-
-<!-- END PAGE LEVEL SCRIPTS -->
-
+<script src="${basePath}/media/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${basePath}/media/bootstrap/js/bootstrap.min.js"></script>
+<script src="${basePath}/media/dist/js/app.js"></script>
 
 <script type="text/javascript">
     //刷新验证码图片
@@ -236,8 +141,6 @@
 
         return result;
     }
-
-
 
     $(function(){
         //输入框绑定事件
