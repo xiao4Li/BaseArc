@@ -1,10 +1,11 @@
 package com.baseArc.controller;
 
+import com.alibaba.druid.support.json.JSONParser;
 import com.baseArc.po.UserPo;
 import com.baseArc.service.UserService;
+import com.baseArc.support.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,18 +23,26 @@ import java.util.List;
  * @Version:    [v1.0] 
  **/
 @Controller
-@RequestMapping("usermanage")
+@RequestMapping("user")
 public class UserController {
     @Autowired
     private UserService userService;
-    @RequestMapping("user")
-    public ModelAndView listEmployee(){
+    @RequestMapping("list")
+    public ModelAndView list(){
         ModelAndView mv = new ModelAndView();
-        List<UserPo> users = userService.listUser();
-        mv.addObject("users",users);
-        mv.setViewName("userpage/usermanage");
+//        List<UserPo> users = userService.listUser();
+//        mv.addObject("users",users);
+        mv.setViewName("user/list");
         return mv;
     }
+
+    @RequestMapping("listUser")
+    @ResponseBody
+    public PagingResult listUser(){
+        List<UserPo> users = userService.listUser();
+        return new PagingResult(users);
+    }
+
 
 
     @ResponseBody

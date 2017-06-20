@@ -18,6 +18,15 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        .base-close-icon{
+            margin-left:10px;
+        }
+        .base-close-icon:hover{
+            cursor: pointer;
+            color: red;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -153,6 +162,7 @@
         $(".sidebar-menu  li a").click(function(){
             var menuId = $(this).attr('menuId');
             var menuName = $(this).attr('menuName');
+            var url = $(this).attr('url');
             if(menuId){
                 debugger;
                 var tabExist = false;
@@ -168,11 +178,9 @@
                 if(!tabExist){
                     var tabContainerHeader = $('#dashboard_tab ul:first');
                     var tabContainerPanel = $('#dashboard_tab .tab-content:first');
-                    tabContainerHeader.append('<li><a href="#' + menuId + '" data-toggle="tab" menuId="' + menuId + '" >' + menuName + '</a></li>');
+                    tabContainerHeader.append('<li><a href="#' + menuId + '" data-toggle="tab" menuId="' + menuId + '" >' + menuName + '<i onclick="baseIconClose(this)" class="fa fa-close base-close-icon"></i></a></li>');
                     tabContainerPanel.append('<div class="tab-pane base_tab_container" id="' + menuId + '" >' +
-//                        '<iframe src="' + url + '" width="100%" height="100%"  scrolling="auto" frameborder=0></iframe>'
-                            menuName
-                            + '</div>');
+                        '<iframe src="' + url + '" width="100%" height="100%"  scrolling="auto" frameborder=0></iframe>' + '</div>');
                     $.AdminLTE.layout.fix();
                     //让新加入的tab active
                     $('#dashboard_tab ul:first > li a').each(function(){
@@ -185,6 +193,26 @@
             }
         });
     });
+
+    var baseIconClose = function (_this) {
+            var me = _this;
+            debugger;
+            var divId = $(me).parent('a').attr('menuid');
+            var isActive = $(me).parent('a').parent('li').hasClass('active');
+            //如果是活动页签关闭，则让后面一个活动,如果后面没有，让前面一个活动
+            if(isActive){
+                var nextTab = $(me).parent().parent().next()[0];
+                var preTab = $(me).parent().parent().prev()[0];
+                if(nextTab){
+                    $(nextTab).children().tab('show');
+                }else if(preTab){
+                    $(preTab).children().tab('show');
+                }
+            }
+
+            $(me).parent().parent().remove();
+            $('#' + divId).remove();
+    }
 
 </script>
 </body>
