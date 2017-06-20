@@ -21,6 +21,7 @@
 
 
     <link href="${basePath}/media/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
+    <link href="${basePath}/media/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
 
 
 </head>
@@ -74,6 +75,7 @@
 <script src="${basePath}/media/plugins/bootstrap-table/bootstrap-table.js"></script>
 <script src="${basePath}/media/plugins/bootstrap-table/bootstrap-table-zh-CN.js"></script>
 
+<script src="${basePath}/media/plugins/jquery-confirm/jquery-confirm.min.js"></script>
 
 <script type="text/javascript">
     $(function () {
@@ -85,6 +87,8 @@
         //2.初始化Button的点击事件
         var oButtonInit = new ButtonInit();
         oButtonInit.Init();
+
+
 
     });
 
@@ -159,6 +163,31 @@
 
         oInit.Init = function () {
             //初始化页面上面的按钮事件
+            $('#btn_add').click(function(){
+                $.confirm({
+                    columnClass: 'col-md-8 col-md-offset-2',
+                    content: 'url:${basePath}/user/userform',
+                    title: '新增用户',
+                    buttons:{
+                        confirm: {
+                            btnClass: 'btn-blue',
+                            text:'确定',
+                            action: function(){}
+                        },
+                        cancel: {
+                            btnClass: 'btn-warning',
+                            text:'取消',
+                            action: function(){}
+                        }
+                    },
+                    closeIcon:true,
+                    contentLoaded: function(data, status, xhr){
+                        debugger;
+                        var self = this;
+                        self.setContent(data);
+                    }
+                });
+            });
         };
 
         return oInit;

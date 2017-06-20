@@ -43,6 +43,15 @@ public class UserController {
         return new PagingResult(users);
     }
 
+    @RequestMapping("userform")
+    public ModelAndView userform(){
+        ModelAndView mv = new ModelAndView();
+//        List<UserPo> users = userService.listUser();
+//        mv.addObject("users",users);
+        mv.setViewName("user/userform");
+        return mv;
+    }
+
 
 
     @ResponseBody
