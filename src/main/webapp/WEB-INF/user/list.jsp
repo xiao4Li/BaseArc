@@ -23,10 +23,6 @@
     <link href="${basePath}/media/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
     <link href="${basePath}/media/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
 
-    <link href="${basePath}/media/plugins/layui/css/layui.css" rel="stylesheet" />
-
-
-
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -81,7 +77,7 @@
 
 <script src="${basePath}/media/plugins/jquery-confirm/jquery-confirm.min.js"></script>
 
-<script src="${basePath}/media/plugins/layui/layui.js"></script>
+<script src="${basePath}/media/plugins/layer/layer.js"></script>
 
 <script type="text/javascript">
     $(function () {
@@ -118,7 +114,7 @@
                 pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
                 search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
-                showColumns: false,                  //是否显示所有的列
+                showColumns: true,                  //是否显示所有的列
                 showRefresh: true,                  //是否显示刷新按钮
                 minimumCountColumns: 2,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
@@ -127,8 +123,7 @@
                 showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
-
-                columns: [{
+                    columns: [{
                     checkbox: true
                 }, {
                     field: 'name',
@@ -151,8 +146,9 @@
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 limit: params.limit,   //页面大小
                 offset: params.offset,  //页码
-                departmentname: $("#txt_search_departmentname").val(),
-                statu: $("#txt_search_statu").val()
+                name: $("#txt_search_departmentname").val(),
+                statu: $("#txt_search_statu").val(),
+                search:params.search
             };
             return temp;
         };
@@ -191,11 +187,22 @@
                     <%--}--%>
                 <%--});--%>
 
-                layui.use(['layer'], function(){
-                    var layer = layui.layer;
-
-                    layer.msg('Hello World');
+                $.post('${basePath}/user/userform', {}, function(str){
+                    layer.open({
+                        type: 1,
+                        title: '新增用户',
+                        area: ['80%', '80%'],
+                        content: str,
+                        btn: ['确定', '关闭'],
+                        yes: function(){
+                            alert('点击确定')
+                        },
+                        btn2: function(){
+                            layer.closeAll();
+                        }
+                    });
                 });
+
 
             });
         };

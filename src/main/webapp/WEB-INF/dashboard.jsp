@@ -32,7 +32,7 @@
             line-height:14px;
         }
         .base-close-icon:hover{
-            background-color: red;
+            background-color: #DF7161;
         }
     </style>
 </head>
