@@ -23,6 +23,10 @@
     <link href="${basePath}/media/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
     <link href="${basePath}/media/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
 
+    <link href="${basePath}/media/plugins/layui/css/layui.css" rel="stylesheet" />
+
+
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -77,18 +81,19 @@
 
 <script src="${basePath}/media/plugins/jquery-confirm/jquery-confirm.min.js"></script>
 
+<script src="${basePath}/media/plugins/layui/layui.js"></script>
+
 <script type="text/javascript">
     $(function () {
 
         //1.初始化Table
         var oTable = new TableInit();
-        oTable.Init();
+        debugger;
+        oTable.Init($(document).height() - 20);
 
         //2.初始化Button的点击事件
         var oButtonInit = new ButtonInit();
         oButtonInit.Init();
-
-
 
     });
 
@@ -96,7 +101,7 @@
     var TableInit = function () {
         var oTableInit = new Object();
         //初始化Table
-        oTableInit.Init = function () {
+        oTableInit.Init = function (_height) {
             $('#tb_departments').bootstrapTable({
                 url: '${basePath}/user/listUser',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
@@ -113,17 +118,15 @@
                 pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
                 search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
-                showColumns: true,                  //是否显示所有的列
+                showColumns: false,                  //是否显示所有的列
                 showRefresh: true,                  //是否显示刷新按钮
                 minimumCountColumns: 2,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
-                height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                height: _height,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
                 uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
-                showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+                showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
-
-
 
                 columns: [{
                     checkbox: true
@@ -164,29 +167,36 @@
         oInit.Init = function () {
             //初始化页面上面的按钮事件
             $('#btn_add').click(function(){
-                $.confirm({
-                    columnClass: 'col-md-8 col-md-offset-2',
-                    content: 'url:${basePath}/user/userform',
-                    title: '新增用户',
-                    buttons:{
-                        confirm: {
-                            btnClass: 'btn-blue',
-                            text:'确定',
-                            action: function(){}
-                        },
-                        cancel: {
-                            btnClass: 'btn-warning',
-                            text:'取消',
-                            action: function(){}
-                        }
-                    },
-                    closeIcon:true,
-                    contentLoaded: function(data, status, xhr){
-                        debugger;
-                        var self = this;
-                        self.setContent(data);
-                    }
+                <%--$.confirm({--%>
+                    <%--columnClass: 'col-md-8 col-md-offset-2',--%>
+                    <%--content: 'url:${basePath}/user/userform',--%>
+                    <%--title: '新增用户',--%>
+                    <%--buttons:{--%>
+                        <%--confirm: {--%>
+                            <%--btnClass: 'btn-blue',--%>
+                            <%--text:'确定',--%>
+                            <%--action: function(){}--%>
+                        <%--},--%>
+                        <%--cancel: {--%>
+                            <%--btnClass: 'btn-warning',--%>
+                            <%--text:'取消',--%>
+                            <%--action: function(){}--%>
+                        <%--}--%>
+                    <%--},--%>
+                    <%--closeIcon:true,--%>
+                    <%--contentLoaded: function(data, status, xhr){--%>
+                        <%--debugger;--%>
+                        <%--var self = this;--%>
+                        <%--self.setContent(data);--%>
+                    <%--}--%>
+                <%--});--%>
+
+                layui.use(['layer'], function(){
+                    var layer = layui.layer;
+
+                    layer.msg('Hello World');
                 });
+
             });
         };
 

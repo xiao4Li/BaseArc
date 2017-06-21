@@ -20,11 +20,19 @@
     <![endif]-->
     <style type="text/css">
         .base-close-icon{
+            color: #c2c2c2;
+            -webkit-transition: all .2s;
+            width:14px;
+            height:14px;
+            font-style: normal;
             margin-left:10px;
+            cursor: pointer;
+            border-radius:8px;
+            text-align: center;
+            line-height:14px;
         }
         .base-close-icon:hover{
-            cursor: pointer;
-            color: red;
+            background-color: red;
         }
     </style>
 </head>
@@ -178,7 +186,7 @@
                 if(!tabExist){
                     var tabContainerHeader = $('#dashboard_tab ul:first');
                     var tabContainerPanel = $('#dashboard_tab .tab-content:first');
-                    tabContainerHeader.append('<li><a href="#' + menuId + '" data-toggle="tab" menuId="' + menuId + '" >' + menuName + '<i onclick="baseIconClose(this)" class="fa fa-close base-close-icon"></i></a></li>');
+                    tabContainerHeader.append('<li><a href="#' + menuId + '" data-toggle="tab" menuId="' + menuId + '" >' + menuName + '<i onclick="baseIconClose(this)" class="fa base-close-icon">&times;</i></a></li>');
                     tabContainerPanel.append('<div class="tab-pane base_tab_container" id="' + menuId + '" >' +
                         '<iframe src="' + url + '" width="100%" height="100%"  scrolling="auto" frameborder=0></iframe>' + '</div>');
                     $.AdminLTE.layout.fix();
