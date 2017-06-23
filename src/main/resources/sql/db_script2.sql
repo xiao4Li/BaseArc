@@ -234,3 +234,9 @@ INSERT INTO SYS_DICT values ('LOGIN_ER_03','验证码为空');
 INSERT INTO SYS_DICT values ('LOGIN_ER_04','验证码不匹配');
 
 INSERT INTO SYS_DICT values ('LOGIN_ER_05','用户名密码错误');
+
+
+UPDATE  sys_resource SET `_URL` = 'index' where `_ID` = 'MENU_01';
+UPDATE  sys_resource SET `_URL` = 'user' where `_ID` = 'MENU_02';
+UPDATE  sys_resource SET `_URL` = 'user/list' where `_ID` = 'MENU_03';
+UPDATE  sys_resource SET `_URL` = 'user/permission' where `_ID` = 'MENU_04';

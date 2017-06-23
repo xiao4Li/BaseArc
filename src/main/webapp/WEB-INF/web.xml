@@ -17,6 +17,10 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--用于获取请求上下文线程副本-->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>shiroFilter</filter-name>
@@ -30,6 +34,35 @@
 
     <filter-mapping>
         <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--xss防御-->
+    <filter>
+        <filter-name>xxsFilter</filter-name>
+        <filter-class>com.baseArc.filter.XssDefenseFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>xxsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--强制请求编码 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
