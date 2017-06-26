@@ -6,93 +6,64 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>钰信诺家</title>
-
-    <!-- Le styles -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>钰信诺家金融管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="${basePath}/media/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${basePath}/media/dist/css/AdminLTE.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="${basePath}/media/dist/css/AdminLTE.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <style type="text/css">
         body {
             padding-top: 40px;
             padding-bottom: 40px;
-            background-color: white !important;
         }
-
-        .form-signin {
-            background-color: rgb(131, 131, 131);
-            max-width: 360px;
-            padding: 40px;
-            margin: 40px;
-            border: 1px solid #e5e5e5;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            box-shadow: 0 1px 2px rgba(0,0,0,.05);
-        }
-        .form-signin {
-            margin-bottom: 10px;
-        }
-        .form-signin input[type="text"],
-        .form-signin input[type="password"] {
-            font-size: 16px;
-            height: auto;
-            margin-bottom: 15px;
-            padding: 7px 9px;
-        }
-
-        .sys_title{
-            text-align:center;
-            margin:0 auto;
-            padding-bottom: 30px;
-        }
-
-        .check_code_box{
-            width: 60%;
-            display: inline;
-        }
-        .check_code_box input{
-            width: 60%;
-        }
-
         .check_code_img{
-            clear: both;
-            margin-right: 0px;
+            height: 34px;
+            width: 39%;
+            vertical-align: top;
         }
-        .check_code_img img{
-            height: 36px;
-            width: 35%;
-            margin-bottom: 15px;
-        }
-        .check_code_img img:hover{
+
+        .check_code_img:hover{
             cursor:pointer;
         }
-
         .error_info{
             text-align: center;
             margin-bottom: 20px;
             color:red;
         }
+
+        .cust_login_box{
+            background-color: white !important;
+            border:1px solid lightgrey;
+            border-radius:5px;
+            padding:10px;
+        }
     </style>
 
 </head>
-<body>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3" >
+<body class="hold-transition login-page">
+<div class="login-box cust_login_box">
+    <div class="login-logo ">
+        <a href="#"><b>钰信诺家</b>金融</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
         <form class="form-signin" action="doLogin" method="post" onsubmit="return validation();">
-            <div class="sys_title">
-            <span>
-                <img src="${basePath}/media/imgs/sys_title.png" width="270" height="55">
-            </span>
-            </div>
+
             <c:if test="${not empty ERROR_CODE}">
                 <div class="error_info">
                 <span>
@@ -101,25 +72,28 @@
                 </div>
             </c:if>
 
-            <input type="text" name="account" class="input-block-level" placeholder="用户名">
-            <input type="password" name="password" class="input-block-level" placeholder="密码">
-            <div>
+            <div class="form-group">
+                <input type="text" name="account" class="form-control input-block-level" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control input-block-level" placeholder="密码">
+            </div>
+
+            <div class="form-group">
             <span class="check_code_box">
-                <input name="identifyingCode" type="text" class="input-block-level" placeholder="验证码">
-            </span>
-                <span class="check_code_img">
-                <img title="点击更换" id="img_identifyingCode" src="captchaController/identifyingCode" onclick="refreshIdentifyingCode()">
+                <input name="identifyingCode" type="text" class="form-control input-block-level" placeholder="验证码" style="width: 60%;display: inline;">
+                <img title="点击更换" class="check_code_img" id="img_identifyingCode" src="captchaController/identifyingCode" onclick="refreshIdentifyingCode()" >
             </span>
             </div>
-            <button id="login_submit" class="btn yellow btn-large btn-block" type="submit">登 录</button>
+            <button id="login_submit" class="btn btn-block btn-primary" type="submit">登 录</button>
         </form>
     </div>
-
-</div> <!-- /container -->
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
 <script src="${basePath}/media/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="${basePath}/media/bootstrap/js/bootstrap.min.js"></script>
-<script src="${basePath}/media/dist/js/app.js"></script>
 
 <script type="text/javascript">
     //刷新验证码图片
@@ -145,7 +119,7 @@
     $(function(){
         //输入框绑定事件
         $('.input-block-level').each(function(){
-           var input = $(this);
+            var input = $(this);
             input.bind("blur",function(){
                 var value = $.trim($(this).val());
                 if(value == ""){
@@ -159,5 +133,8 @@
     });
 </script>
 
+<script>
+
+</script>
 </body>
 </html>

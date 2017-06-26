@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="${basePath}/media/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="${basePath}/media/dist/css/skins/skin-blue.min.css">
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
         .base-close-icon{
@@ -42,9 +42,9 @@
         <c:set value="${sessionScope.SYS_MENUS}" var="menus"/>
         <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>钰信</b>诺家</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><b>钰信诺家</b>金融</span>
         </a>
         <nav class="navbar navbar-static-top" role="navigation">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -156,9 +156,10 @@
     </div>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            Anything you want
+            <%--Anything you want--%>
         </div>
-        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+        <%--<strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.--%>
+        <strong>钰信诺家</strong>金融管理系统
     </footer>
 </div>
 <script src="${basePath}/media/plugins/jQuery/jquery-2.2.3.min.js"></script>
