@@ -1,6 +1,5 @@
 package com.baseArc.controller;
 
-import com.alibaba.druid.support.json.JSONParser;
 import com.baseArc.po.UserPo;
 import com.baseArc.service.UserService;
 import com.baseArc.support.PagingResult;
@@ -64,5 +63,12 @@ public class UserController {
             }
         }
         return "true";
+    }
+    @ResponseBody
+    @RequestMapping("/test")
+    public String test(String id,String account){
+        int a = 0,b = 1,c;
+        c = b/a;
+        return "";
     }
 }
