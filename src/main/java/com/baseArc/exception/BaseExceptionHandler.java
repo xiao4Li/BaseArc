@@ -1,15 +1,13 @@
 package com.baseArc.exception;
 
-import com.baseArc.exception.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Package: [com.baseArc.exception]
@@ -25,16 +23,27 @@ public class BaseExceptionHandler implements HandlerExceptionResolver {
     private final static Logger logger = LoggerFactory.getLogger(BaseExceptionHandler.class);
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("e", e.getMessage());
-        e.printStackTrace();
-        // 根据不同错误转向不同页面
-        if (e instanceof BusinessException) {
-            logger.error("业务异常",e);
-            return new ModelAndView("errorPage/businessError", model);
-        }else{
-            logger.error("未定义异常",e);
+        ModelAndView mv = new ModelAndView();
+        logger.error("异常信息",e);
+        if (this.isAjaxRequest(httpServletRequest)) {
+            mv.setView(new MappingJackson2JsonView());//利用jackson返回json信息
+        } else {
+            mv.addObject("error", e);
+            mv.setViewName("/error");
         }
-        return null;
+        return mv;
     }
+
+    /**
+     * 判断当前请求是否一个异步 请求
+     *
+     * @param request 异步 请求
+     * @return 如果是异步请求 则返回true
+     */
+    public static boolean isAjaxRequest(HttpServletRequest request) {
+        //ajax判断,仅一个标准header中含有X-Requested-With
+        String requestProxy = request.getHeader("X-Requested-With");
+        return org.springframework.util.StringUtils.hasText(requestProxy) && "XMLHttpRequest".equals(requestProxy);
+    }
+
 }

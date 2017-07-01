@@ -1,6 +1,7 @@
 package com.baseArc.controller;
 
 import org.activiti.engine.RepositoryService;
+import org.activiti.engine.repository.Deployment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,12 @@ import javax.annotation.Resource;
  * Created by chenye on 2017/6/17.
  */
 @Controller
-@RequestMapping("uploadWorkflowController")
+@RequestMapping("/uploadWorkflowController")
 public class UploadWorkflowController {
     @Resource
     private RepositoryService repositoryService;
 
-    @RequestMapping("page")
+    @RequestMapping("/page")
     public String upload(){
         return "pages/upload";
     }

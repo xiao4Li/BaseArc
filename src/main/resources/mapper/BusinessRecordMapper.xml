@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baseArc.dao.BusinessRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.baseArc.po.BusinessRecord" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="node_name" property="nodeName" jdbcType="VARCHAR" />
+    <result column="opt_name" property="optName" jdbcType="VARCHAR" />
+    <result column="opt_id" property="optId" jdbcType="VARCHAR" />
+    <result column="business_key" property="businessKey" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="statusno" property="statusno" jdbcType="INTEGER" />
+    <result column="sys_insert_time" property="sysInsertTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, node_name, opt_name, opt_id, business_key, result, note, statusno, sys_insert_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from business_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from business_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.baseArc.po.BusinessRecord" >
+    insert into business_record (id, node_name, opt_name, 
+      opt_id, business_key, result, 
+      note, statusno, sys_insert_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{nodeName,jdbcType=VARCHAR}, #{optName,jdbcType=VARCHAR}, 
+      #{optId,jdbcType=VARCHAR}, #{businessKey,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{statusno,jdbcType=INTEGER}, #{sysInsertTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baseArc.po.BusinessRecord" >
+    insert into business_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nodeName != null" >
+        node_name,
+      </if>
+      <if test="optName != null" >
+        opt_name,
+      </if>
+      <if test="optId != null" >
+        opt_id,
+      </if>
+      <if test="businessKey != null" >
+        business_key,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="statusno != null" >
+        statusno,
+      </if>
+      <if test="sysInsertTime != null" >
+        sys_insert_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeName != null" >
+        #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="optName != null" >
+        #{optName,jdbcType=VARCHAR},
+      </if>
+      <if test="optId != null" >
+        #{optId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessKey != null" >
+        #{businessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="statusno != null" >
+        #{statusno,jdbcType=INTEGER},
+      </if>
+      <if test="sysInsertTime != null" >
+        #{sysInsertTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baseArc.po.BusinessRecord" >
+    update business_record
+    <set >
+      <if test="nodeName != null" >
+        node_name = #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="optName != null" >
+        opt_name = #{optName,jdbcType=VARCHAR},
+      </if>
+      <if test="optId != null" >
+        opt_id = #{optId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessKey != null" >
+        business_key = #{businessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="statusno != null" >
+        statusno = #{statusno,jdbcType=INTEGER},
+      </if>
+      <if test="sysInsertTime != null" >
+        sys_insert_time = #{sysInsertTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baseArc.po.BusinessRecord" >
+    update business_record
+    set node_name = #{nodeName,jdbcType=VARCHAR},
+      opt_name = #{optName,jdbcType=VARCHAR},
+      opt_id = #{optId,jdbcType=VARCHAR},
+      business_key = #{businessKey,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      statusno = #{statusno,jdbcType=INTEGER},
+      sys_insert_time = #{sysInsertTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

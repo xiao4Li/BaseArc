@@ -48,4 +48,3 @@
 
     <bean class="com.baseArc.exception.BaseExceptionHandler"/>
 </beans>
-</beans>

@@ -36,7 +36,7 @@
         <!--生成对应表及类名-->
 
 
-        <table schema="basearc" tableName="sys_user_role" domainObjectName="Test"
+        <table schema="basearc" tableName="business_record" domainObjectName="BusinessRecord"
             enableCountByExample="false"
             enableUpdateByExample="false"
             enableDeleteByExample="false"
